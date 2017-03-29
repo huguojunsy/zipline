@@ -500,10 +500,10 @@ class DataPortal(object):
                      session_label > asset.end_date):
                 if field == "volume":
                     return 0
-                elif field != "last_traded":
-                    return np.NaN
                 elif field == "contract":
                     return None
+                elif field != "last_traded":
+                    return np.NaN
 
             if data_frequency == "daily":
                 if field == "contract":

@@ -467,6 +467,14 @@ class ContinuousFuturesTestCase(WithCreateBarData,
                          'Auto close at beginning of session so FOG16 is now '
                          'the current contract.')
 
+        contract = self.data_portal.get_spot_value(
+            cf_primary,
+            'contract',
+            self.START_DATE - self.trading_calendar.day,
+            'daily',
+        )
+        self.assertIsNone(contract)
+
     def test_get_value_close_daily(self):
         cf_primary = self.asset_finder.create_continuous_future(
             'FO', 0, 'calendar', None)
