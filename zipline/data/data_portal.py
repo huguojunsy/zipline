@@ -1368,7 +1368,10 @@ class DataPortal(object):
 
     def _get_current_contract(self, continuous_future, dt):
         rf = self._roll_finders[continuous_future.roll_style]
-        return self.asset_finder.retrieve_asset(
-            rf.get_contract_center(continuous_future.root_symbol,
-                                   dt,
-                                   continuous_future.offset))
+        contract_sid = rf.get_contract_center(continuous_future.root_symbol,
+                                              dt,
+                                              continuous_future.offset)
+        if contract_sid is None:
+            return None
+        else:
+            return self.asset_finder.retrieve_asset(contract_sid)
