@@ -1373,5 +1373,4 @@ class DataPortal(object):
                                               continuous_future.offset)
         if contract_sid is None:
             return None
-        else:
-            return self.asset_finder.retrieve_asset(contract_sid)
+        return self.asset_finder.retrieve_asset(contract_sid)
